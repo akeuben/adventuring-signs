@@ -1,8 +1,12 @@
 package ca.akeuben.adventuringsigns;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.minecraft.server.MinecraftServer;
 
 public class AdventuringSignsFabric implements ModInitializer {
+
+    public static MinecraftServer server;
 
     @Override
     public void onInitialize() {
@@ -14,5 +18,12 @@ public class AdventuringSignsFabric implements ModInitializer {
         // Use Fabric to bootstrap the Common mod.
         Constants.LOG.info("Hello Fabric world!");
         AdventuringSigns.init();
+
+        ServerLifecycleEvents.SERVER_STARTED.register(server -> {
+            AdventuringSignsFabric.server = server;
+        });
+        ServerLifecycleEvents.SERVER_STOPPED.register(_ -> {
+            AdventuringSignsFabric.server = null;
+        });
     }
 }

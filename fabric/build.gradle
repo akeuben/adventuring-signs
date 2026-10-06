@@ -2,10 +2,23 @@ plugins {
     id 'multiloader-loader'
     id 'net.fabricmc.fabric-loom'
 }
+
+repositories {
+    // for development builds
+    maven {
+        name = 'central-snapshots'
+        url = 'https://central.sonatype.com/repository/maven-snapshots/'
+        mavenContent { snapshotsOnly() }
+    }
+    // for releases
+    mavenCentral()
+}
+
 dependencies {
     minecraft("com.mojang:minecraft:${minecraft_version}")
     implementation("net.fabricmc:fabric-loader:${fabric_loader_version}")
     implementation("net.fabricmc.fabric-api:fabric-api:${fabric_version}")
+    include(implementation('net.kyori:adventure-platform-fabric:7.2.0')) // for Minecraft 26.3
 }
 
 loom {

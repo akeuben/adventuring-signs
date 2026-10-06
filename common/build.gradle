@@ -35,8 +35,6 @@ dependencies {
     compileOnly(annotationProcessor('io.github.llamalad7:mixinextras-common:0.5.3'))
 
     compileOnly("net.kyori:adventure-platform-mod-shared:7.2.0") // for Minecraft 26.3
-    compileOnly("net.kyori:adventure-text-minimessage:4.2.0")
-    compileOnly("net.kyori:adventure-api:4.17.0")
 }
 
 configurations {

@@ -3,6 +3,21 @@ plugins {
     id 'net.neoforged.moddev'
 }
 
+repositories {
+    // for development builds
+    maven {
+        name = 'central-snapshots'
+        url = 'https://central.sonatype.com/repository/maven-snapshots/'
+        mavenContent { snapshotsOnly() }
+    }
+    // for releases
+    mavenCentral()
+}
+
+dependencies {
+    jarJar(implementation('net.kyori:adventure-platform-neoforge:7.2.0')) // for Minecraft 26.3
+}
+
 neoForge {
     version = neoforge_version
     // Automatically enable neoforge AccessTransformers if the file exists
