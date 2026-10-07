@@ -10,7 +10,6 @@ import org.jspecify.annotations.Nullable;
 
 public class NeoForgePlatformHelper implements IPlatformHelper {
 
-
     @Override
     public @Nullable MinecraftServer getMinecraftServerInstance() {
         return ServerLifecycleHooks.getCurrentServer();

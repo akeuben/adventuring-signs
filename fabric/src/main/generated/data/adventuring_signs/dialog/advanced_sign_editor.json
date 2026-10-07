@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:multi_action",
+  "actions": [
+    {
+      "action": {
+        "type": "minecraft:dynamic/custom",
+        "id": "adventuring_signs:advanced_sign_editor"
+      },
+      "label": "Submit"
+    }
+  ],
+  "after_action": "none",
+  "can_close_with_escape": false,
+  "columns": 1,
+  "inputs": [
+    {
+      "type": "minecraft:text",
+      "key": "line0",
+      "label": "Line 1",
+      "max_length": 256,
+      "multiline": {
+        "height": 40,
+        "max_lines": 4
+      }
+    }
+  ],
+  "pause": false,
+  "title": "Edit Sign Contents"
+}

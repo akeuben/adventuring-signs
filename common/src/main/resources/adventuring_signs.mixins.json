@@ -3,11 +3,10 @@
   "minVersion": "0.8",
   "package": "ca.akeuben.adventuringsigns.mixin",
   "compatibilityLevel": "JAVA_25",
-  "mixins": [],
-  "client": [
-    "MixinMinecraft",
+  "mixins": [
     "MixinSignBlock"
   ],
+  "client": [],
   "server": [],
   "injectors": {
     "defaultRequire": 1
