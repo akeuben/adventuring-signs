@@ -56,6 +56,9 @@ public class SignApplicator {
                 TextTransformer.parseMiniMessage(rawLines[3])
         );
         sign.setText(new SignText(lines, lines, sign.getText(SignTextSlot.FRONT).getColor(), sign.getText(SignTextSlot.FRONT).hasGlowingText()), SignTextSlot.FRONT);
+        for(int i = 0; i < lines.size(); i++) {
+            ((AdventuringSign) sign).adventuringsigns$setLine(i, rawLines[i]);
+        }
     }
 
     public static void applySign(MinecraftServer server, CompoundTag data) {

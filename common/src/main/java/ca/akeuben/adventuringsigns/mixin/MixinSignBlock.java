@@ -1,5 +1,6 @@
 package ca.akeuben.adventuringsigns.mixin;
 
+import ca.akeuben.adventuringsigns.AdventuringSign;
 import ca.akeuben.adventuringsigns.ui.AdvancedSignEditor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -27,11 +28,14 @@ public abstract class MixinSignBlock {
 
     @Inject(method = "useItemOn", at = @At("HEAD"), cancellable = true)
     private void adventuringsigns$useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult, CallbackInfoReturnable<InteractionResult> cir) {
-        if(level.getBlockEntity(pos) instanceof SignBlockEntity sign) {
+        if(level.getBlockEntity(pos) instanceof SignBlockEntity vanillaSign) {
+
+            AdventuringSign sign = (AdventuringSign) vanillaSign;
+
             if (hand == InteractionHand.OFF_HAND)
                 return;
 
-            if (itemStack.getItem() != Items.INK_SAC)
+            if (itemStack.getItem() != Items.INK_SAC && !(itemStack.isEmpty() && sign.isAdventuring()))
                 return;
 
             if(level.isClientSide()) {
@@ -52,7 +56,7 @@ public abstract class MixinSignBlock {
                     )
             );
 
-            if(player.gameMode() != GameType.CREATIVE)
+            if(player.gameMode() != GameType.CREATIVE && !sign.isAdventuring())
                 player.getInventory().removeItem(player.getInventory().getSelectedSlot(), 1);
 
             cir.setReturnValue(InteractionResult.SUCCESS);

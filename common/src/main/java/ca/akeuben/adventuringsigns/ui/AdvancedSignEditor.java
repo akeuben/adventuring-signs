@@ -1,7 +1,7 @@
 package ca.akeuben.adventuringsigns.ui;
 
+import ca.akeuben.adventuringsigns.AdventuringSign;
 import ca.akeuben.adventuringsigns.Constants;
-import ca.akeuben.adventuringsigns.text.TextTransformer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -9,15 +9,13 @@ import net.minecraft.server.dialog.*;
 import net.minecraft.server.dialog.action.CustomAll;
 import net.minecraft.server.dialog.input.TextInput;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.entity.SignBlockEntity;
-import net.minecraft.world.level.block.entity.SignTextSlot;
 
 import java.util.List;
 import java.util.Optional;
 
 public class AdvancedSignEditor {
-    public static Dialog advancedSignEditor(SignBlockEntity sign, Player player) {
-        List<String> original = sign.getText(SignTextSlot.FRONT).getMessages(false).stream().map(TextTransformer::encodeMiniMessage).toList();
+    public static Dialog advancedSignEditor(AdventuringSign sign, Player player) {
+        List<String> original = List.of(sign.adventuringsigns$getLine(0), sign.adventuringsigns$getLine(1), sign.adventuringsigns$getLine(2), sign.adventuringsigns$getLine(3));
         List<Input> inputs = List.of(
                 new Input(
                         "line0",

@@ -4,7 +4,8 @@
   "package": "ca.akeuben.adventuringsigns.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "MixinSignBlock"
+    "MixinSignBlock",
+    "MixinSignBlockEntity"
   ],
   "client": [],
   "server": [],
